@@ -1,0 +1,40 @@
+package models.validators;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import models.Attendance;
+
+public class AttendanceValidator {
+	public static List<String> validate(Attendance a) {
+        List<String> errors = new ArrayList<String>();
+
+        String go_error = _validateGo(a.getGo());
+        if(!go_error.equals("")) {
+            errors.add(go_error);
+        }
+
+        String out_error = _validateOut(a.getOut());
+        if(!out_error.equals("")) {
+            errors.add(out_error);
+        }
+
+        return errors;
+    }
+
+    private static String _validateGo(String go) {
+        if(go == null || go.equals("")) {
+            return "出勤時間を入力してください。";
+            }
+
+        return "";
+    }
+
+    private static String _validateOut(String out) {
+        if(out == null || out.equals("")) {
+            return "退勤時間を入力してください。";
+            }
+
+        return "";
+    }
+}
