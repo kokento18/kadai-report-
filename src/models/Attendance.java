@@ -24,6 +24,14 @@ import javax.persistence.Table;
             name = "getAttendancesCount",
             query = "SELECT COUNT(a) FROM Attendance AS a"
             ),
+    @NamedQuery(
+            name = "getMyAllAttendances",
+            query = "SELECT a FROM Attendance AS a WHERE a.employee = :employee ORDER BY a.id DESC"
+            ),
+    @NamedQuery(
+            name = "getMyAttendancesCount",
+            query = "SELECT COUNT(a) FROM Attendance AS a WHERE a.employee = :employee"
+            )
 
 })
 @Entity
@@ -37,14 +45,14 @@ public class Attendance {
     @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
 
-    @Column(name = "report_date", nullable = false)
-    private Date report_date;
+    @Column(name = "attendance_date", nullable = false)
+    private Date attendance_date;
 
     @Column(name = "go", nullable = false)
     private String go;
 
-    @Column(name = "out", nullable = false)
-    private String out;
+    @Column(name = "aout", nullable = false)
+    private String aout;
 
     @Column(name = "created_at", nullable = false)
     private Timestamp created_at;
@@ -76,23 +84,27 @@ public class Attendance {
 		this.go = go;
 	}
 
-	public String getOut() {
-		return out;
+
+
+
+
+    public String getAout() {
+		return aout;
 	}
 
-	public void setOut(String out) {
-		this.out = out;
+	public void setAout(String aout) {
+		this.aout = aout;
 	}
 
-	public Date getReport_date() {
-        return report_date;
-    }
+	public Date getAttendance_date() {
+		return attendance_date;
+	}
 
-    public void setReport_date(Date report_date) {
-        this.report_date = report_date;
-    }
+	public void setAttendance_date(Date attendance_date) {
+		this.attendance_date = attendance_date;
+	}
 
-    public Timestamp getCreated_at() {
+	public Timestamp getCreated_at() {
         return created_at;
     }
 

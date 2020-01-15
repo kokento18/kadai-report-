@@ -14,9 +14,9 @@ public class AttendanceValidator {
             errors.add(go_error);
         }
 
-        String out_error = _validateOut(a.getOut());
-        if(!out_error.equals("")) {
-            errors.add(out_error);
+        String aout_error = _validateOut(a.getAout());
+        if(!aout_error.equals("")) {
+            errors.add(aout_error);
         }
 
         return errors;
@@ -30,8 +30,8 @@ public class AttendanceValidator {
         return "";
     }
 
-    private static String _validateOut(String out) {
-        if(out == null || out.equals("")) {
+    private static String _validateOut(String aout) {
+        if(aout == null || aout.equals("")) {
             return "退勤時間を入力してください。";
             }
 
